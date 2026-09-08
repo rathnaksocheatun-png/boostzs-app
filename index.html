@@ -205,15 +205,13 @@
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        .qr-img { 
-            width: 210px; 
-            height: 210px; 
+        .qr-card-img { 
+            width: 100%; 
+            max-width: 260px; 
+            height: auto; 
             border-radius: 16px; 
-            margin: 16px 0; 
-            border: 2px solid #ffffff; 
-            background: #ffffff; 
-            padding: 8px; 
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            margin: 14px 0; 
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
         }
 
         .btn-app { 
@@ -281,8 +279,8 @@
 
     <div class="card">
         <h1 class="live-title">BOOSTZS</h1>
-        <p class="subtitle">សេវាកម្មបង្កើន TikTok ឆាប់រហ័ស និងមានសុវត្ថិភាព »» ទទួលបាន Likes , Views , Comments , Saves , Follows ខ្មែរទាំងអស់🇰🇭 ⚡</p>
-        <h4>ប្រសិនបើអាខោនអ្នកលក់មាន Likes , Views , Comments , Followers ច្រើន នោះប្រាកដណាស់នឹងបង្កើនទំនុកចិត្តដល់អ្នកទិញ 70% ភ្លាមៗ</h4>
+        <p class="subtitle">សេវាកម្មបង្កើន TikTok ឆាប់រហ័ស និងមានសុវត្ថិភាព ⚡</p>
+
         <form id="boostForm">
             <div class="form-group">
                 <label>ជ្រើសរើសសេវាកម្ម</label>
@@ -313,16 +311,15 @@
         </form>
     </div>
 
-    <!-- Modal បង្ហាញ QR Code Bakong -->
+    <!-- Modal បង្ហាញ KHQR សម្រាប់បង់ប្រាក់ -->
     <div class="modal" id="paymentModal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <h3 style="color:#00ff88; margin-top:0; font-size: 20px; font-weight:700;">ស្កែន KHQR ដើម្បីបង់ប្រាក់</h3>
-            <div class="account-name">RATHNAKSOCHEAT UN</div>
             <p style="font-size: 13px; color: #ff66b2; margin-top: 6px; margin-bottom: 4px;">ចំនួនទឹកប្រាក់ត្រូវបង់៖ <b style="color:#00ff88; font-size: 18px; font-family:'Inter';">$0.96</b></p>
             
-            <!-- រូប QR Code Bakong -->
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://bakong-deeplink.nbc.gov.kh/bakong/IB559UC2HCtFCZF9M" alt="Bakong KHQR" class="qr-img">
+            <!-- រូបភាព KHQR ពេញលេញ RATHNAKSOCHEAT UN -->
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://bakong-deeplink.nbc.gov.kh/bakong/IB559UC2HCtFCZF9M" alt="Bakong KHQR Card" class="qr-card-img">
             
             <!-- ប៊ូតុងចុចបើក App Bakong / ABA -->
             <a href="https://bakong-deeplink.nbc.gov.kh/bakong/IB559UC2HCtFCZF9M" target="_blank" class="btn-app">
@@ -378,8 +375,8 @@
             const quantity = document.getElementById('quantityInput').value;
 
             // អត្ថបទសារសម្រាប់ផ្ញើទៅ Telegram
-            const reportText = `សួស្តី! ខ្ញុំបានបង់ប្រាក់រួចរាល់ហើយ-ខ្ញុំនិងផ្ញើរវិក្កយបត្រឲ្យ ៖%0A%0A` +
-                               `📌 NAME: RATHNAKSOCHEAT UN%0A` +
+            const reportText = `សួស្តី! ខ្ញុំបានបង់ប្រាក់រួចរាល់ហើយ ៖%0A%0A` +
+                               `📌 [USERNAME] UN%0A` +
                                `🔗 Link Video: ${encodeURIComponent(videoLink)}%0A` +
                                `🛠️ Service: ${serviceName} (${quantity})%0A` +
                                `💵 Price: $0.96`;
