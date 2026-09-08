@@ -3,390 +3,498 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOOSTZS - Premium TikTok Boost Service</title>
+    <title>BOOSTZS - SMM Panel</title>
+    <!-- Import Google Fonts: Montserrat & Kantumruy Pro -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Kantumruy+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
     <style>
         * { 
             box-sizing: border-box; 
-            font-family: 'Kantumruy Pro', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+            font-family: 'Kantumruy Pro', 'Montserrat', sans-serif; 
             margin: 0;
             padding: 0;
         }
 
         body { 
-            background-color: #05070a; 
-            color: #ff66b2; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
+            background-color: #030712; 
+            color: #ffffff; 
             min-height: 100vh; 
-            padding: 20px;
-            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 12px;
             position: relative;
+            overflow-x: hidden;
         }
 
-        body::before {
-            content: '';
-            position: absolute;
-            top: 20%;
+        /* Banner Background រស់រវើក */
+        .bg-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(3, 7, 18, 0.75), rgba(3, 7, 18, 0.95)), 
+                        url('image_7.png') center/cover no-repeat;
+            z-index: -2;
+            filter: brightness(0.7) contrast(1.1);
+            transform: scale(1.02);
+            animation: bgZoom 20s infinite alternate ease-in-out;
+        }
+
+        @keyframes bgZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.06); }
+        }
+
+        /* Overlay Glow */
+        .bg-glow {
+            position: fixed;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(0, 255, 136, 0.12) 0%, rgba(255, 42, 133, 0.08) 50%, transparent 70%);
-            z-index: 0;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(239, 68, 68, 0.25) 0%, rgba(59, 130, 246, 0.15) 50%, transparent 70%);
+            z-index: -1;
             pointer-events: none;
-            filter: blur(50px);
+            filter: blur(80px);
         }
 
-        .card { 
-            background: rgba(13, 17, 23, 0.85); 
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+        .container { 
+            background: rgba(15, 23, 42, 0.85); 
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-radius: 24px; 
-            padding: 32px 28px; 
+            padding: 30px 22px; 
             width: 100%; 
-            max-width: 440px; 
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 255, 136, 0.05); 
+            max-width: 480px; 
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(239, 68, 68, 0.2); 
             position: relative;
             z-index: 1;
         }
-        
-        h1.live-title { 
-            color: #00ff88; 
-            text-align: center; 
-            font-family: 'Inter', sans-serif;
-            font-size: 40px; 
-            font-weight: 800;
-            margin-bottom: 6px; 
-            letter-spacing: 3px;
-            animation: pulseGlow 1.8s infinite alternate ease-in-out;
+
+        /* Header / Font Style BOOSTZS ក្រហមលាយសដិត មានភ្លើងឆេះពីក្រោម */
+        .brand-header {
+            text-align: center;
+            margin-bottom: 12px;
+            position: relative;
         }
 
-        @keyframes pulseGlow {
-            0% {
-                text-shadow: 0 0 8px rgba(0, 255, 136, 0.6), 0 0 18px rgba(0, 255, 136, 0.4);
-                transform: scale(1);
-            }
-            100% {
-                text-shadow: 0 0 18px rgba(0, 255, 136, 0.9), 0 0 35px rgba(0, 255, 136, 0.6), 0 0 50px rgba(0, 255, 136, 0.4);
-                transform: scale(1.03);
-            }
+        h1.brand-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 46px;
+            font-weight: 900;
+            font-style: italic;
+            letter-spacing: 2px;
+            background: linear-gradient(180deg, #ffffff 0%, #ff4d4d 60%, #cc0000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(255, 77, 77, 0.8);
+            position: relative;
+            display: inline-block;
         }
 
-        p.subtitle { 
-            text-align: center; 
-            color: #ff66b2; 
-            font-size: 13.5px; 
-            margin-bottom: 28px; 
-            opacity: 0.9;
-            font-weight: 400;
+        /* ភ្លើងឆេះពីក្រោម និងភ្លឺភ្លែតៗ */
+        h1.brand-title::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 5%;
+            width: 90%;
+            height: 8px;
+            background: radial-gradient(ellipse at center, #ff0000 0%, #ff6600 50%, transparent 80%);
+            filter: blur(4px);
+            border-radius: 50%;
+            animation: fireFlicker 0.8s infinite alternate ease-in-out;
         }
 
-        .form-group { margin-bottom: 20px; }
-        
-        label { 
-            display: block; 
-            font-size: 13.5px; 
-            margin-bottom: 8px; 
-            color: #ff66b2; 
-            font-weight: 600; 
-            letter-spacing: 0.3px;
+        @keyframes fireFlicker {
+            0% { opacity: 0.7; transform: scaleX(0.95) scaleY(0.8); filter: blur(3px); }
+            50% { opacity: 1; transform: scaleX(1.05) scaleY(1.3); filter: blur(5px); }
+            100% { opacity: 0.8; transform: scaleX(0.98) scaleY(1); filter: blur(4px); }
         }
 
-        select, input { 
-            width: 100%; 
-            padding: 14px 16px; 
-            background: #090d14; 
-            border: 1px solid #1a2332; 
-            border-radius: 12px; 
-            color: #ff99cc; 
-            font-size: 14px; 
-            outline: none; 
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        /* Description ពណ៌បៃតងភ្លឺៗ មានរន្ទះបាញ់ជុំវិញ */
+        .desc-box {
+            text-align: center;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid #10b981;
+            border-radius: 14px;
+            padding: 12px;
+            margin-bottom: 18px;
+            color: #10b981;
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 1.6;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+            position: relative;
+            animation: lightningGlow 1.5s infinite alternate;
         }
 
-        select:focus, input:focus { 
-            border-color: #00ff88; 
-            box-shadow: 0 0 12px rgba(0, 255, 136, 0.25);
-            background: #0b111a;
-        }
-        
-        .price-box { 
-            background: rgba(255, 42, 133, 0.05); 
-            border: 1px dashed rgba(255, 102, 178, 0.4); 
-            border-radius: 14px; 
-            padding: 16px; 
-            text-align: center; 
-            margin-bottom: 24px; 
-            transition: 0.3s;
+        @keyframes lightningGlow {
+            0% { box-shadow: 0 0 10px rgba(16, 185, 129, 0.3), inset 0 0 5px rgba(16, 185, 129, 0.2); }
+            100% { box-shadow: 0 0 22px rgba(16, 185, 129, 0.7), inset 0 0 10px rgba(16, 185, 129, 0.4); }
         }
 
-        .price-title { 
-            font-size: 12.5px; 
-            color: #ff66b2; 
-            margin-bottom: 4px; 
-            opacity: 0.8;
+        /* ចំណងជើងទំហំល្មមរាងចូលដើមបន្ទាត់ */
+        .trust-title {
+            font-size: 13.5px;
+            color: #cbd5e1;
+            margin-left: 8px;
+            margin-bottom: 16px;
+            line-height: 1.5;
+            font-weight: 500;
         }
 
-        .price-amount { 
-            font-family: 'Inter', sans-serif;
-            font-size: 30px; 
-            font-weight: 800; 
-            color: #00ff88; 
-            text-shadow: 0 0 12px rgba(0, 255, 136, 0.3);
+        /* ប្រអប់ចំណាំ */
+        .notice-box {
+            background: rgba(239, 68, 68, 0.12);
+            border-left: 4px solid #ef4444;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            color: #fca5a5;
+            font-weight: 600;
+            margin-bottom: 22px;
         }
 
-        .limit-info { 
-            font-size: 12px; 
-            color: #ff2a85; 
-            margin-top: 6px; 
+        /* Sections: Service, Package, Confirmation */
+        .section-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #38bdf8;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Options Buttons Grid */
+        .grid-options {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .opt-btn {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: #e2e8f0;
+            font-size: 13.5px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.25s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .opt-btn:hover {
+            border-color: #38bdf8;
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        .opt-btn.active {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.15);
+            color: #ffffff;
+            box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+        }
+
+        .owner-contact {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            font-size: 12.5px;
+            margin-bottom: 22px;
+        }
+
+        .owner-contact a {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .owner-contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* Order Confirmation Box */
+        .confirmation-card {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 20px;
+        }
+
+        .confirm-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13.5px;
+            margin-bottom: 8px;
+            color: #94a3b8;
+        }
+
+        .confirm-item span.val {
+            color: #ffffff;
             font-weight: 600;
         }
 
-        .btn-submit { 
-            width: 100%; 
-            padding: 16px; 
-            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%); 
-            color: #05070a; 
-            font-weight: 700; 
-            border: none; 
-            border-radius: 12px; 
-            font-size: 16px; 
-            cursor: pointer; 
-            transition: all 0.3s ease; 
-            box-shadow: 0 8px 20px rgba(0, 255, 136, 0.25);
+        .total-row {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #10b981;
         }
 
-        .btn-submit:hover { 
-            transform: translateY(-2px); 
-            box-shadow: 0 12px 28px rgba(0, 255, 136, 0.4);
-            filter: brightness(1.05);
-        }
-        
-        .modal { 
-            display: none; 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            background: rgba(3, 5, 8, 0.92); 
-            backdrop-filter: blur(10px);
-            justify-content: center; 
-            align-items: center; 
-            z-index: 1000; 
-            padding: 20px; 
+        /* Form Inputs */
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            background: #090d16;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            color: #ffffff;
+            font-size: 13px;
+            margin-bottom: 12px;
+            outline: none;
         }
 
-        .modal-content { 
-            background: #0d1117; 
-            border-radius: 24px; 
-            padding: 30px 24px; 
-            text-align: center; 
-            max-width: 380px; 
-            width: 100%; 
-            border: 1px solid rgba(0, 255, 136, 0.3); 
-            position: relative; 
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 255, 136, 0.1);
-            animation: modalFadeIn 0.3s ease-out;
+        .form-input:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 8px rgba(56, 189, 248, 0.3);
         }
 
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: scale(0.95) translateY(10px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+        /* Payment Section */
+        .payment-box {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 16px;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .qr-img { 
-            width: 220px; 
-            height: 220px; 
-            border-radius: 16px; 
-            margin: 16px 0; 
-            border: 2px solid #ffffff; 
-            background: #ffffff; 
-            padding: 8px; 
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        .qr-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 12px;
+            background: #ffffff;
+            padding: 6px;
+            margin: 12px 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
         }
 
-        .btn-app { 
-            display: block; 
-            width: 100%; 
-            padding: 14px; 
-            background: #00ff88; 
-            color: #05070a; 
-            font-weight: 700; 
-            text-decoration: none; 
-            border-radius: 12px; 
-            margin-bottom: 12px; 
-            font-size: 14px; 
+        .btn-tg {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #0088cc 0%, #006699 100%);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            border-radius: 12px;
+            margin-top: 12px;
+            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.4);
             transition: 0.2s;
-            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.2);
+            text-align: center;
         }
 
-        .btn-app:hover {
-            background: #00e67a;
-            transform: translateY(-1px);
-        }
-
-        .btn-telegram { 
-            display: inline-block; 
-            width: 100%; 
-            padding: 14px; 
-            background: linear-gradient(135deg, #0088cc 0%, #006699 100%); 
-            color: #ffffff; 
-            text-decoration: none; 
-            border-radius: 12px; 
-            font-weight: 700; 
-            font-size: 14px; 
-            transition: 0.2s;
-            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
-        }
-
-        .btn-telegram:hover {
-            transform: translateY(-1px);
+        .btn-tg:hover {
+            transform: translateY(-2px);
             filter: brightness(1.1);
-        }
-
-        .close-btn { 
-            position: absolute; 
-            top: 14px; 
-            right: 18px; 
-            font-size: 26px; 
-            color: #ff66b2; 
-            cursor: pointer; 
-            transition: 0.2s;
-            opacity: 0.8;
-        }
-
-        .close-btn:hover { opacity: 1; color: #ff2a85; }
-
-        .account-name { 
-            color: #ff66b2; 
-            font-size: 14px; 
-            font-weight: 700; 
-            margin-top: 6px; 
-            letter-spacing: 0.5px;
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h1 class="live-title">BOOSTZS</h1>
-        <p class="subtitle">សេវាកម្មបង្កើន TikTok ឆាប់រហ័ស និងមានសុវត្ថិភាព ⚡</p>
+    <div class="bg-banner"></div>
+    <div class="bg-glow"></div>
 
-        <form id="boostForm">
-            <div class="form-group">
-                <label>ជ្រើសរើសសេវាកម្ម</label>
-                <select id="serviceSelect" onchange="updateServiceInfo()">
-                    <option value="TikTok Likes" data-price="0.96" data-min="494" data-max="1235">TikTok Likes — $0.96 (494 - 1,235 Likes)</option>
-                    <option value="TikTok Views" data-price="0.96" data-min="2555" data-max="8234">TikTok Views — $0.96 (2,555 - 8,234 Views)</option>
-                    <option value="TikTok Followers" data-price="0.96" data-min="4577" data-max="15511">TikTok Followers — $0.96 (4,577 - 15,511 Followers)</option>
-                </select>
+    <div class="container">
+        
+        <!-- Header / Logo -->
+        <div class="brand-header">
+            <h1 class="brand-title">BOOSTZS</h1>
+        </div>
+
+        <!-- Description បៃតង មានរន្ទះ -->
+        <div class="desc-box">
+            ⚡ ⚡ ⚡<br>
+            សេវាកម្មបង្កើន TikTok ឆាប់រហ័ស និងមានទំនុកចិត្ត »»» Likes,Views,Comments,Saves,Followers សុទ្ធតែខ្មែរទាំងអស់🇰🇭
+        </div>
+
+        <!-- ចំណងជើងចូលដើមបន្ទាត់ -->
+        <p class="trust-title">
+            &nbsp;&nbsp;&nbsp;&nbsp;បើសិនអាខោនអ្នកលក់មាន Likes, Comments, Followers ច្រើននោះនឹងបង្កើនទំនុកចិត្តដល់អ្នកទិញបាន 70% 🛍️
+        </p>
+
+        <!-- ប្រអប់ចំណាំ -->
+        <div class="notice-box">
+            📌 ចំណាំ: ទិញបានសម្រាប់តែអ្នកមាន Telegram ប៉ុណ្ណោះ !
+        </div>
+
+        <!-- Service 🏪 -->
+        <div class="section-title">Service 🏪</div>
+        <div class="grid-options" id="serviceGroup">
+            <button class="opt-btn active" onclick="selectService('TikTok Likes ❤️', this)">
+                <span>TikTok Likes ❤️</span>
+            </button>
+            <button class="opt-btn" onclick="selectService('TikTok Views 👀', this)">
+                <span>TikTok Views 👀</span>
+            </button>
+            <button class="opt-btn" onclick="selectService('TikTok Followers 💛', this)">
+                <span>TikTok Followers 💛</span>
+            </button>
+        </div>
+
+        <!-- Package 🎁 -->
+        <div class="section-title">Package 🎁</div>
+        <div class="grid-options" id="packageGroup">
+            <!-- Packages នឹងត្រូវបាន Update តាម Service ដោយស្វ័យប្រវត្ត -->
+        </div>
+
+        <!-- Owner Contact -->
+        <div class="owner-contact">
+            📌 បើត្រូវការចំនួនច្រើនជាងនេះទាក់ទង Owner: <a href="https://t.me/zicksiik" target="_blank">https://t.me/zicksiik</a>
+        </div>
+
+        <!-- Inputs Link & Telegram -->
+        <input type="text" id="tgInput" class="form-input" placeholder="បញ្ជូល Telegram Name / Username របស់អ្នក" oninput="updateConfirmation()">
+        <input type="url" id="linkInput" class="form-input" placeholder="បញ្ជូល Link វីដេអូ ឬ Profile TikTok របស់អ្នក" oninput="updateConfirmation()">
+
+        <!-- Order Confirmation 🔥 -->
+        <div class="section-title">Order Confirmation 🔥</div>
+        <div class="confirmation-card">
+            <div class="confirm-item">
+                <span>Service 🏪:</span>
+                <span class="val" id="confService">TikTok Likes ❤️</span>
             </div>
-
-            <div class="form-group">
-                <label>Link វីដេអូ ឬ គណនី TikTok</label>
-                <input type="url" id="linkInput" placeholder="https://www.tiktok.com/@username/video/..." required>
+            <div class="confirm-item">
+                <span>Package 🎁:</span>
+                <span class="val" id="confPackage">454 - 1235 ❤️</span>
             </div>
-
-            <div class="form-group">
-                <label>ចំនួន (Quantity)</label>
-                <input type="number" id="quantityInput" value="494" oninput="validateQuantity()" required>
+            <div class="confirm-item total-row">
+                <span>Total:</span>
+                <span class="val" id="confTotal" style="color:#10b981;">$0.96</span>
             </div>
+        </div>
 
-            <div class="price-box">
-                <div class="price-title">តម្លៃសរុប (Total Price)</div>
-                <div class="price-amount" id="totalPriceDisplay">$0.96</div>
-                <div class="limit-info" id="limitInfoDisplay">អនុញ្ញាតចាប់ពី 494 ដល់ 1,235</div>
-            </div>
-
-            <button type="submit" class="btn-submit">បន្តទៅការបង់ប្រាក់ ➔</button>
-        </form>
-    </div>
-
-    <div class="modal" id="paymentModal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h3 style="color:#00ff88; margin-top:0; font-size: 20px; font-weight:700;">ស្កែន KHQR ដើម្បីបង់ប្រាក់</h3>
-            <div class="account-name">RATHNAKSOCHEAT UN</div>
-            <p style="font-size: 13px; color: #ff66b2; margin-top: 6px; margin-bottom: 4px;">ចំនួនទឹកប្រាក់ត្រូវបង់៖ <b style="color:#00ff88; font-size: 18px; font-family:'Inter';">$0.96</b></p>
+        <!-- Payment & QR Section -->
+        <div class="payment-box">
+            <div style="font-size: 13.5px; color: #38bdf8; font-weight: 700;">ទូទាត់ប្រាក់តាម KHQR ខាងក្រោម 📲</div>
             
-            <!-- KHQR Standard String ដែលបង្កើតចេញពី rathnaksocheat_un@bkrt ស្កែនបាន 100% -->
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=000201010211373000130000000000010113rathnaksocheat_un@bkrt5204599953038405802KH5918RATHNAKSOCHEAT%20UN6010Phnom%20Penh6304" alt="Bakong KHQR" class="qr-img">
-            
-            <a href="https://bakong-deeplink.nbc.gov.kh/bakong/8etPvIkCYsEVFfemz" target="_blank" class="btn-app">
-                📲 ចុចទីនេះដើម្បីបង់ប្រាក់តាម App
-            </a>
+            <!-- KHQR Image (ស្កែនបានពិតៗ) -->
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=000201010211373000130000000000010113rathnaksocheat_un@bkrt5204599953038405802KH5918RATHNAKSOCHEAT%20UN6010Phnom%20Penh6304" alt="KHQR Payment" class="qr-image">
 
-            <p style="font-size: 12px; color: #ff66b2; margin-bottom: 14px; opacity: 0.9;">
-                បន្ទាប់ពីបង់ប្រាក់រួច សូមផ្ញើ **រូបថតវិក្កយបត្រ (Receipt)** មក Telegram ដើម្បីឱ្យប្រព័ន្ធដំណើរការ Order ជូន!
+            <p style="font-size: 12px; color: #94a3b8; margin-top: 4px;">
+                បង់ប្រាក់រួច ចុចប៊ូតុងខាងក្រោមដើម្បីផ្ញើរបាយការណ៍ទៅ Telegram Owner
             </p>
 
-            <a id="telegramBtn" href="#" target="_blank" class="btn-telegram">
-                📩 ផ្ញើវិក្កយបត្រតាម Telegram
+            <a id="tgSendBtn" href="https://t.me/zicksiik" target="_blank" class="btn-tg">
+                📩 ផ្ញើរបាយការណ៍ទៅ Telegram
             </a>
         </div>
+
     </div>
 
     <script>
-        function updateServiceInfo() {
-            const select = document.getElementById('serviceSelect');
-            const selectedOption = select.options[select.selectedIndex];
+        // ទិន្នន័យ Packages តាមប្រភេទ Service
+        const packagesData = {
+            'TikTok Likes ❤️': [
+                { text: '$0.96 / 454 - 1235 ❤️', price: 0.96, pkg: '454 - 1235 ❤️' },
+                { text: '$1.35 / 691 - 1,729 ❤️', price: 1.35, pkg: '691 - 1,729 ❤️' },
+                { text: '$1.99 / 1,086 - 2,717 ❤️', price: 1.99, pkg: '1,086 - 2,717 ❤️' }
+            ],
+            'TikTok Views 👀': [
+                { text: '$0.96 / 2,555 - 8,234 👀', price: 0.96, pkg: '2,555 - 8,234 👀' },
+                { text: '$1.20 / 3,577 - 11,528 👀', price: 1.20, pkg: '3,577 - 11,528 👀' },
+                { text: '$1.43 / 4,599 - 14,822 👀', price: 1.43, pkg: '4,599 - 14,822 👀' }
+            ],
+            'TikTok Followers 💛': [
+                { text: '$0.96 / 1,372 - 4,651 👀+💛', price: 0.96, pkg: '1,372 - 4,651 👀+💛' },
+                { text: '$1.18 / 1,921 - 6,511 👀+💛', price: 1.18, pkg: '1,921 - 6,511 👀+💛' }
+            ]
+        };
+
+        let currentService = 'TikTok Likes ❤️';
+        let currentPackage = packagesData['TikTok Likes ❤️'][0];
+
+        function selectService(serviceName, element) {
+            currentService = serviceName;
             
-            const min = selectedOption.getAttribute('data-min');
-            const max = selectedOption.getAttribute('data-max');
-            
-            const quantityInput = document.getElementById('quantityInput');
-            quantityInput.min = min;
-            quantityInput.max = max;
-            quantityInput.value = min;
+            // Active style for Service Button
+            const btns = document.querySelectorAll('#serviceGroup .opt-btn');
+            btns.forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
 
-            document.getElementById('limitInfoDisplay').innerText = `អនុញ្ញាតចាប់ពី ${parseInt(min).toLocaleString()} ដល់ ${parseInt(max).toLocaleString()}`;
+            // Render Packages
+            renderPackages();
         }
 
-        function validateQuantity() {
-            const select = document.getElementById('serviceSelect');
-            const selectedOption = select.options[select.selectedIndex];
-            const min = parseInt(selectedOption.getAttribute('data-min'));
-            const max = parseInt(selectedOption.getAttribute('data-max'));
-            const val = parseInt(document.getElementById('quantityInput').value) || 0;
+        function renderPackages() {
+            const pkgContainer = document.getElementById('packageGroup');
+            pkgContainer.innerHTML = '';
 
-            if (val < min || val > max) {
-                document.getElementById('limitInfoDisplay').style.color = '#ff2a85';
-            } else {
-                document.getElementById('limitInfoDisplay').style.color = '#ff66b2';
-            }
+            const list = packagesData[currentService];
+            currentPackage = list[0]; // set default to first package
+
+            list.forEach((item, index) => {
+                const btn = document.createElement('button');
+                btn.className = `opt-btn ${index === 0 ? 'active' : ''}`;
+                btn.innerHTML = `<span>${item.text}</span>`;
+                btn.onclick = () => selectPackage(item, btn);
+                pkgContainer.appendChild(btn);
+            });
+
+            updateConfirmation();
         }
 
-        document.getElementById('boostForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        function selectPackage(item, element) {
+            currentPackage = item;
 
-            const serviceName = document.getElementById('serviceSelect').value;
-            const videoLink = document.getElementById('linkInput').value;
-            const quantity = document.getElementById('quantityInput').value;
+            const btns = document.querySelectorAll('#packageGroup .opt-btn');
+            btns.forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
 
-            const reportText = `សួស្តី! ខ្ញុំបានបង់ប្រាក់រួចរាល់ហើយ ៖%0A%0A` +
-                               `📌 NAME: RATHNAKSOCHEAT UN%0A` +
-                               `🔗 Link Video: ${encodeURIComponent(videoLink)}%0A` +
-                               `🛠️ Service: ${serviceName} (${quantity})%0A` +
-                               `💵 Price: $0.96`;
-
-            const telegramUrl = `https://t.me/un_rathnak_socheat?text=${reportText}`;
-            document.getElementById('telegramBtn').href = telegramUrl;
-
-            document.getElementById('paymentModal').style.display = 'flex';
-        });
-
-        function closeModal() {
-            document.getElementById('paymentModal').style.display = 'none';
+            updateConfirmation();
         }
 
-        updateServiceInfo();
+        function updateConfirmation() {
+            document.getElementById('confService').innerText = currentService;
+            document.getElementById('confPackage').innerText = currentPackage.pkg;
+            document.getElementById('confTotal').innerText = `$${currentPackage.price.toFixed(2)}`;
+
+            // បង្កើតអត្ថបទសារតាមទម្រង់ដែលបានកំណត់
+            const userTg = document.getElementById('tgInput').value || 'មិនបានបញ្ចូល';
+            const tiktokLink = document.getElementById('linkInput').value || 'មិនបានបញ្ចូល';
+
+            const reportMsg = `សួរស្ដីបងខ្ញុំបាន pay លុយរួចហើយ ខ្ញុំហ្នឹងផ្ញើរវិក្កយបត្រ pay លុយឲ្យ%0A%0A` +
+                              `👤 Name / Username TG: ${encodeURIComponent(userTg)}%0A` +
+                              `🔗 Link TikTok: ${encodeURIComponent(tiktokLink)}%0A` +
+                              `🏪 ប្រភេទ service: ${encodeURIComponent(currentService)}%0A` +
+                              `🎁 តម្លៃកញ្ចប់: ${encodeURIComponent(currentPackage.pkg)}%0A` +
+                              `💵 តម្លៃសរុប: $${currentPackage.price.toFixed(2)}`;
+
+            const tgUrl = `https://t.me/zicksiik?text=${reportMsg}`;
+            document.getElementById('tgSendBtn').href = tgUrl;
+        }
+
+        // Initialize
+        renderPackages();
     </script>
 </body>
 </html>
