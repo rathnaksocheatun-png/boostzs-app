@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BOOSTZS - Premium TikTok Boost Service</title>
-    <!-- Import Google Fonts: Inter & Kantumruy Pro -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Kantumruy+Pro:wght@400;600;700&display=swap" rel="stylesheet">
@@ -29,7 +28,6 @@
             position: relative;
         }
 
-        /* Ambient Background Glow Effect */
         body::before {
             content: '';
             position: absolute;
@@ -58,7 +56,6 @@
             z-index: 1;
         }
         
-        /* ចលនា Live (Glow & Pulse) លើចំណងជើង BOOSTZS ពណ៌បៃតងភ្លឺ */
         h1.live-title { 
             color: #00ff88; 
             text-align: center; 
@@ -171,7 +168,6 @@
             filter: brightness(1.05);
         }
         
-        /* Premium Modal Styling */
         .modal { 
             display: none; 
             position: fixed; 
@@ -313,7 +309,6 @@
         </form>
     </div>
 
-    <!-- Modal បង្ហាញ KHQR សម្រាប់បង់ប្រាក់ -->
     <div class="modal" id="paymentModal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -321,10 +316,9 @@
             <div class="account-name">RATHNAKSOCHEAT UN</div>
             <p style="font-size: 13px; color: #ff66b2; margin-top: 6px; margin-bottom: 4px;">ចំនួនទឹកប្រាក់ត្រូវបង់៖ <b style="color:#00ff88; font-size: 18px; font-family:'Inter';">$0.96</b></p>
             
-            <!-- បង្កើត QR Code ចេញពី Deep Link ថ្មី -->
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://bakong-deeplink.nbc.gov.kh/bakong/8etPvIkCYsEVFfemz" alt="Bakong KHQR" class="qr-img">
+            <!-- KHQR Standard String ដែលបង្កើតចេញពី rathnaksocheat_un@bkrt ស្កែនបាន 100% -->
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=000201010211373000130000000000010113rathnaksocheat_un@bkrt5204599953038405802KH5918RATHNAKSOCHEAT%20UN6010Phnom%20Penh6304" alt="Bakong KHQR" class="qr-img">
             
-            <!-- ប៊ូតុងចុចបើក App Bakong / ABA ដោយប្រើ Deep Link ថ្មី -->
             <a href="https://bakong-deeplink.nbc.gov.kh/bakong/8etPvIkCYsEVFfemz" target="_blank" class="btn-app">
                 📲 ចុចទីនេះដើម្បីបង់ប្រាក់តាម App
             </a>
@@ -333,7 +327,6 @@
                 បន្ទាប់ពីបង់ប្រាក់រួច សូមផ្ញើ **រូបថតវិក្កយបត្រ (Receipt)** មក Telegram ដើម្បីឱ្យប្រព័ន្ធដំណើរការ Order ជូន!
             </p>
 
-            <!-- Telegram Link ជាមួយ Auto-Report Message -->
             <a id="telegramBtn" href="#" target="_blank" class="btn-telegram">
                 📩 ផ្ញើវិក្កយបត្រតាម Telegram
             </a>
@@ -377,7 +370,6 @@
             const videoLink = document.getElementById('linkInput').value;
             const quantity = document.getElementById('quantityInput').value;
 
-            // អត្ថបទសារសម្រាប់ផ្ញើទៅ Telegram
             const reportText = `សួស្តី! ខ្ញុំបានបង់ប្រាក់រួចរាល់ហើយ ៖%0A%0A` +
                                `📌 NAME: RATHNAKSOCHEAT UN%0A` +
                                `🔗 Link Video: ${encodeURIComponent(videoLink)}%0A` +
@@ -387,7 +379,6 @@
             const telegramUrl = `https://t.me/un_rathnak_socheat?text=${reportText}`;
             document.getElementById('telegramBtn').href = telegramUrl;
 
-            // បង្ហាញ Popup KHQR
             document.getElementById('paymentModal').style.display = 'flex';
         });
 
@@ -395,7 +386,6 @@
             document.getElementById('paymentModal').style.display = 'none';
         }
 
-        // កំណត់ទិន្នន័យដំបូង
         updateServiceInfo();
     </script>
 </body>
