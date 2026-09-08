@@ -3,64 +3,286 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOOSTZS - TikTok Boost Service</title>
+    <title>BOOSTZS - Premium TikTok Boost Service</title>
+    <!-- Import Google Fonts: Inter & Kantumruy Pro -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Kantumruy+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #0b0e14; color: #fff; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
-        .card { background: #151a23; border: 1px solid #222b3a; border-radius: 16px; padding: 25px; width: 100%; max-width: 450px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        * { 
+            box-sizing: border-box; 
+            font-family: 'Kantumruy Pro', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+            margin: 0;
+            padding: 0;
+        }
+
+        body { 
+            background-color: #05070a; 
+            color: #ff66b2; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ambient Background Glow Effect */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.12) 0%, rgba(255, 42, 133, 0.08) 50%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+            filter: blur(50px);
+        }
+
+        .card { 
+            background: rgba(13, 17, 23, 0.85); 
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 24px; 
+            padding: 32px 28px; 
+            width: 100%; 
+            max-width: 440px; 
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 255, 136, 0.05); 
+            position: relative;
+            z-index: 1;
+        }
         
-        /* ចលនា Live (Glow & Pulse) លើចំណងជើង BOOSTZS */
+        /* ចលនា Live (Glow & Pulse) លើចំណងជើង BOOSTZS ពណ៌បៃតងភ្លឺ */
         h1.live-title { 
             color: #00ff88; 
             text-align: center; 
-            font-size: 36px; 
+            font-family: 'Inter', sans-serif;
+            font-size: 40px; 
             font-weight: 800;
-            margin-bottom: 5px; 
-            letter-spacing: 2px;
+            margin-bottom: 6px; 
+            letter-spacing: 3px;
             animation: pulseGlow 1.8s infinite alternate ease-in-out;
         }
 
         @keyframes pulseGlow {
             0% {
-                text-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88, 0 0 20px #00ff88;
+                text-shadow: 0 0 8px rgba(0, 255, 136, 0.6), 0 0 18px rgba(0, 255, 136, 0.4);
                 transform: scale(1);
             }
             100% {
-                text-shadow: 0 0 15px #00ff88, 0 0 25px #00ff88, 0 0 40px #00ff88, 0 0 50px #00ff88;
+                text-shadow: 0 0 18px rgba(0, 255, 136, 0.9), 0 0 35px rgba(0, 255, 136, 0.6), 0 0 50px rgba(0, 255, 136, 0.4);
                 transform: scale(1.03);
             }
         }
 
-        p.subtitle { text-align: center; color: #a0aec0; font-size: 13px; margin-bottom: 25px; }
-        .form-group { margin-bottom: 18px; }
-        label { display: block; font-size: 14px; margin-bottom: 8px; color: #e2e8f0; font-weight: 600; }
-        select, input { width: 100%; padding: 12px 15px; background: #0b0e14; border: 1px solid #2d3748; border-radius: 8px; color: #fff; font-size: 14px; outline: none; transition: 0.2s; }
-        select:focus, input:focus { border-color: #00ff88; }
-        
-        .price-box { background: rgba(0, 255, 136, 0.08); border: 1px dashed #00ff88; border-radius: 8px; padding: 15px; text-align: center; margin-bottom: 20px; }
-        .price-title { font-size: 13px; color: #a0aec0; margin-bottom: 4px; }
-        .price-amount { font-size: 26px; font-weight: bold; color: #00ff88; }
-        .limit-info { font-size: 12px; color: #ff007f; margin-top: 5px; }
+        p.subtitle { 
+            text-align: center; 
+            color: #ff66b2; 
+            font-size: 13.5px; 
+            margin-bottom: 28px; 
+            opacity: 0.9;
+            font-weight: 400;
+        }
 
-        .btn-submit { width: 100%; padding: 14px; background: #00ff88; color: #000; font-weight: bold; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; transition: 0.3s; }
-        .btn-submit:hover { background: #00cc6a; transform: translateY(-2px); }
+        .form-group { margin-bottom: 20px; }
         
-        /* Modal QR Code */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 1000; padding: 20px; }
-        .modal-content { background: #151a23; border-radius: 16px; padding: 25px; text-align: center; max-width: 380px; width: 100%; border: 1px solid #00ff88; position: relative; }
-        .qr-img { width: 210px; height: 210px; border-radius: 12px; margin: 15px 0; border: 2px solid #fff; background: #fff; padding: 5px; }
-        .btn-app { display: block; width: 100%; padding: 12px; background: #00ff88; color: #000; font-weight: bold; text-decoration: none; border-radius: 8px; margin-bottom: 12px; font-size: 14px; }
-        .btn-telegram { display: inline-block; width: 100%; padding: 12px; background: #0088cc; color: #fff; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 14px; }
-        .close-btn { position: absolute; top: 10px; right: 15px; font-size: 24px; color: #a0aec0; cursor: pointer; }
-        .account-name { color: #e2e8f0; font-size: 14px; font-weight: bold; margin-top: 5px; }
+        label { 
+            display: block; 
+            font-size: 13.5px; 
+            margin-bottom: 8px; 
+            color: #ff66b2; 
+            font-weight: 600; 
+            letter-spacing: 0.3px;
+        }
+
+        select, input { 
+            width: 100%; 
+            padding: 14px 16px; 
+            background: #090d14; 
+            border: 1px solid #1a2332; 
+            border-radius: 12px; 
+            color: #ff99cc; 
+            font-size: 14px; 
+            outline: none; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        select:focus, input:focus { 
+            border-color: #00ff88; 
+            box-shadow: 0 0 12px rgba(0, 255, 136, 0.25);
+            background: #0b111a;
+        }
+        
+        .price-box { 
+            background: rgba(255, 42, 133, 0.05); 
+            border: 1px dashed rgba(255, 102, 178, 0.4); 
+            border-radius: 14px; 
+            padding: 16px; 
+            text-align: center; 
+            margin-bottom: 24px; 
+            transition: 0.3s;
+        }
+
+        .price-title { 
+            font-size: 12.5px; 
+            color: #ff66b2; 
+            margin-bottom: 4px; 
+            opacity: 0.8;
+        }
+
+        .price-amount { 
+            font-family: 'Inter', sans-serif;
+            font-size: 30px; 
+            font-weight: 800; 
+            color: #00ff88; 
+            text-shadow: 0 0 12px rgba(0, 255, 136, 0.3);
+        }
+
+        .limit-info { 
+            font-size: 12px; 
+            color: #ff2a85; 
+            margin-top: 6px; 
+            font-weight: 600;
+        }
+
+        .btn-submit { 
+            width: 100%; 
+            padding: 16px; 
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%); 
+            color: #05070a; 
+            font-weight: 700; 
+            border: none; 
+            border-radius: 12px; 
+            font-size: 16px; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 8px 20px rgba(0, 255, 136, 0.25);
+        }
+
+        .btn-submit:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 12px 28px rgba(0, 255, 136, 0.4);
+            filter: brightness(1.05);
+        }
+        
+        /* Premium Modal Styling */
+        .modal { 
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(3, 5, 8, 0.92); 
+            backdrop-filter: blur(10px);
+            justify-content: center; 
+            align-items: center; 
+            z-index: 1000; 
+            padding: 20px; 
+        }
+
+        .modal-content { 
+            background: #0d1117; 
+            border-radius: 24px; 
+            padding: 30px 24px; 
+            text-align: center; 
+            max-width: 380px; 
+            width: 100%; 
+            border: 1px solid rgba(0, 255, 136, 0.3); 
+            position: relative; 
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 255, 136, 0.1);
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.95) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .qr-img { 
+            width: 210px; 
+            height: 210px; 
+            border-radius: 16px; 
+            margin: 16px 0; 
+            border: 2px solid #ffffff; 
+            background: #ffffff; 
+            padding: 8px; 
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-app { 
+            display: block; 
+            width: 100%; 
+            padding: 14px; 
+            background: #00ff88; 
+            color: #05070a; 
+            font-weight: 700; 
+            text-decoration: none; 
+            border-radius: 12px; 
+            margin-bottom: 12px; 
+            font-size: 14px; 
+            transition: 0.2s;
+            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.2);
+        }
+
+        .btn-app:hover {
+            background: #00e67a;
+            transform: translateY(-1px);
+        }
+
+        .btn-telegram { 
+            display: inline-block; 
+            width: 100%; 
+            padding: 14px; 
+            background: linear-gradient(135deg, #0088cc 0%, #006699 100%); 
+            color: #ffffff; 
+            text-decoration: none; 
+            border-radius: 12px; 
+            font-weight: 700; 
+            font-size: 14px; 
+            transition: 0.2s;
+            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
+        }
+
+        .btn-telegram:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.1);
+        }
+
+        .close-btn { 
+            position: absolute; 
+            top: 14px; 
+            right: 18px; 
+            font-size: 26px; 
+            color: #ff66b2; 
+            cursor: pointer; 
+            transition: 0.2s;
+            opacity: 0.8;
+        }
+
+        .close-btn:hover { opacity: 1; color: #ff2a85; }
+
+        .account-name { 
+            color: #ff66b2; 
+            font-size: 14px; 
+            font-weight: 700; 
+            margin-top: 6px; 
+            letter-spacing: 0.5px;
+        }
     </style>
 </head>
 <body>
 
     <div class="card">
         <h1 class="live-title">BOOSTZS</h1>
-        <p class="subtitle">សេវាកម្មបង្កើន TikTok ឆាប់រហ័ស និងមានសុវត្ថិភាព ⚡</p>
-
+        <p class="subtitle">សេវាកម្មបង្កើន TikTok ឆាប់រហ័ស និងមានសុវត្ថិភាព »» ទទួលបាន Likes , Views , Comments , Saves , Follows ខ្មែរទាំងអស់🇰🇭 ⚡</p>
+        <h4>ប្រសិនបើអាខោនអ្នកលក់មាន Likes , Views , Comments , Followers ច្រើន នោះប្រាកដណាស់នឹងបង្កើនទំនុកចិត្តដល់អ្នកទិញ 70% ភ្លាមៗ</h4>
         <form id="boostForm">
             <div class="form-group">
                 <label>ជ្រើសរើសសេវាកម្ម</label>
@@ -95,11 +317,11 @@
     <div class="modal" id="paymentModal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h3 style="color:#00ff88; margin-top:0; font-size: 20px;">ស្កែន KHQR ដើម្បីបង់ប្រាក់</h3>
+            <h3 style="color:#00ff88; margin-top:0; font-size: 20px; font-weight:700;">ស្កែន KHQR ដើម្បីបង់ប្រាក់</h3>
             <div class="account-name">RATHNAKSOCHEAT UN</div>
-            <p style="font-size: 13px; color: #a0aec0; margin-top: 5px; margin-bottom: 5px;">ចំនួនទឹកប្រាក់ត្រូវបង់៖ <b style="color:#00ff88; font-size: 18px;">$0.96</b></p>
+            <p style="font-size: 13px; color: #ff66b2; margin-top: 6px; margin-bottom: 4px;">ចំនួនទឹកប្រាក់ត្រូវបង់៖ <b style="color:#00ff88; font-size: 18px; font-family:'Inter';">$0.96</b></p>
             
-            <!-- រូប QR Code Bakong ថ្មី -->
+            <!-- រូប QR Code Bakong -->
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://bakong-deeplink.nbc.gov.kh/bakong/IB559UC2HCtFCZF9M" alt="Bakong KHQR" class="qr-img">
             
             <!-- ប៊ូតុងចុចបើក App Bakong / ABA -->
@@ -107,11 +329,11 @@
                 📲 ចុចទីនេះដើម្បីបង់ប្រាក់តាម App
             </a>
 
-            <p style="font-size: 12px; color: #a0aec0; margin-bottom: 12px;">
+            <p style="font-size: 12px; color: #ff66b2; margin-bottom: 14px; opacity: 0.9;">
                 បន្ទាប់ពីបង់ប្រាក់រួច សូមផ្ញើ **រូបថតវិក្កយបត្រ (Receipt)** មក Telegram ដើម្បីឱ្យប្រព័ន្ធដំណើរការ Order ជូន!
             </p>
 
-            <!-- Telegram Link ដែលមានសាររាយការណ៍អូតូ -->
+            <!-- Telegram Link ជាមួយ Auto-Report Message -->
             <a id="telegramBtn" href="#" target="_blank" class="btn-telegram">
                 📩 ផ្ញើវិក្កយបត្រតាម Telegram
             </a>
@@ -142,9 +364,9 @@
             const val = parseInt(document.getElementById('quantityInput').value) || 0;
 
             if (val < min || val > max) {
-                document.getElementById('limitInfoDisplay').style.color = '#ff4d4d';
+                document.getElementById('limitInfoDisplay').style.color = '#ff2a85';
             } else {
-                document.getElementById('limitInfoDisplay').style.color = '#ff007f';
+                document.getElementById('limitInfoDisplay').style.color = '#ff66b2';
             }
         }
 
@@ -155,14 +377,13 @@
             const videoLink = document.getElementById('linkInput').value;
             const quantity = document.getElementById('quantityInput').value;
 
-            // បង្កើតអត្ថបទសារសម្រាប់ផ្ញើទៅ Telegram
-            const reportText = `សួស្តី! ខ្ញុំបានបង់ប្រាក់រួចរាល់ហើយ ៖%0A%0A` +
+            // អត្ថបទសារសម្រាប់ផ្ញើទៅ Telegram
+            const reportText = `សួស្តី! ខ្ញុំបានបង់ប្រាក់រួចរាល់ហើយ-ខ្ញុំនិងផ្ញើរវិក្កយបត្រឲ្យ ៖%0A%0A` +
                                `📌 NAME: RATHNAKSOCHEAT UN%0A` +
                                `🔗 Link Video: ${encodeURIComponent(videoLink)}%0A` +
                                `🛠️ Service: ${serviceName} (${quantity})%0A` +
                                `💵 Price: $0.96`;
 
-            // បញ្ចូល Link ទៅកាន់ប៊ូតុង Telegram
             const telegramUrl = `https://t.me/un_rathnak_socheat?text=${reportText}`;
             document.getElementById('telegramBtn').href = telegramUrl;
 
