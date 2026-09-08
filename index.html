@@ -3,217 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOOSTZS.COM - Premium TikTok Boosting Service</title>
-
-    <!-- Google Font: Kantumruy Pro & Poppins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;600;700&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
-
+    <title>BOOSTZS - TikTok Boost Service</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Kantumruy Pro', sans-serif;
-        }
-
-        body {
-            background-color: #050505; /* ពណ៌ខ្មៅដិត */
-            color: #ff7ebb; /* ពណ៌ផ្កាឈូក */
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        /* Glassmorphism Premium Card */
-        .card {
-            background: rgba(18, 18, 22, 0.95);
-            padding: 35px 25px;
-            border-radius: 20px;
-            width: 100%;
-            max-width: 440px;
-            border: 1px solid rgba(0, 255, 102, 0.2);
-            box-shadow: 0 0 35px rgba(0, 255, 102, 0.08), 0 15px 30px rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-        }
-
-        /* ចំណងជើងមានចលនា (Live Neon Glow Animation) */
-        h1.logo {
-            font-family: 'Poppins', sans-serif;
-            text-align: center;
-            font-size: 38px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            color: #00ff66; /* ពណ៌បៃតងភ្លឺ */
-            text-shadow: 0 0 10px rgba(0, 255, 102, 0.8),
-                         0 0 20px rgba(0, 255, 102, 0.5),
-                         0 0 30px rgba(0, 255, 102, 0.3);
-            animation: neonPulse 1.8s infinite alternate;
-            margin-bottom: 5px;
-        }
-
-        @keyframes neonPulse {
-            0% {
-                text-shadow: 0 0 8px rgba(0, 255, 102, 0.7),
-                             0 0 18px rgba(0, 255, 102, 0.4);
-                transform: scale(1);
-            }
-            100% {
-                text-shadow: 0 0 15px rgba(0, 255, 102, 1),
-                             0 0 30px rgba(0, 255, 102, 0.8),
-                             0 0 45px rgba(0, 255, 102, 0.5);
-                transform: scale(1.02);
-            }
-        }
-
-        .subtitle {
-            text-align: center;
-            color: #ff94c7; /* ពណ៌ផ្កាឈូកស្រាល */
-            font-size: 13px;
-            margin-bottom: 30px;
-            font-weight: 400;
-            opacity: 0.9;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #ff7ebb; /* ពណ៌ផ្កាឈូក */
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        select, input {
-            width: 100%;
-            padding: 14px 16px;
-            border-radius: 12px;
-            border: 1px solid #331222;
-            background: #0d0d11;
-            color: #ffb3d9; /* ពណ៌ផ្កាឈូកភ្លឺ */
-            font-size: 14px;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-        select:focus, input:focus {
-            border-color: #00ff66;
-            box-shadow: 0 0 12px rgba(0, 255, 102, 0.3);
-        }
-
-        /* Styling Options in Dropdown */
-        option {
-            background-color: #121216;
-            color: #ff7ebb;
-        }
-
-        /* Premium Gradient Button */
-        button {
-            width: 100%;
-            padding: 15px;
-            border-radius: 12px;
-            border: none;
-            background: linear-gradient(135deg, #00ff66 0%, #00b347 100%);
-            color: #050505; /* អក្សរខ្មៅដិតលើ Button ឱ្យធ្លាច្បាស់ */
-            font-weight: 700;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-            box-shadow: 0 4px 20px rgba(0, 255, 102, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(0, 255, 102, 0.5);
-        }
-
-        button:active {
-            transform: translateY(0);
-        }
-
-        #message {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 14px;
-            font-weight: 500;
-        }
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #0b0e14; color: #fff; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
+        .card { background: #151a23; border: 1px solid #222b3a; border-radius: 16px; padding: 25px; width: 100%; max-width: 450px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h1 { color: #00ff88; text-align: center; font-size: 32px; margin-bottom: 5px; text-shadow: 0 0 10px rgba(0, 255, 136, 0.3); }
+        p.subtitle { text-align: center; color: #a0aec0; font-size: 13px; margin-bottom: 25px; }
+        .form-group { margin-bottom: 18px; }
+        label { display: block; font-size: 14px; margin-bottom: 8px; color: #e2e8f0; font-weight: 600; }
+        select, input { width: 100%; padding: 12px 15px; background: #0b0e14; border: 1px solid #2d3748; border-radius: 8px; color: #fff; font-size: 14px; outline: none; }
+        select:focus, input:focus { border-color: #00ff88; }
+        .price-box { background: rgba(0, 255, 136, 0.1); border: 1px dashed #00ff88; border-radius: 8px; padding: 12px; text-align: center; margin-bottom: 20px; }
+        .price-title { font-size: 13px; color: #a0aec0; }
+        .price-amount { font-size: 24px; font-weight: bold; color: #00ff88; }
+        .btn-submit { width: 100%; padding: 14px; background: #00ff88; color: #000; font-weight: bold; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; transition: 0.3s; }
+        .btn-submit:hover { background: #00cc6a; transform: translateY(-2px); }
+        
+        /* Modal QR Code */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 1000; padding: 20px; }
+        .modal-content { background: #151a23; border-radius: 16px; padding: 25px; text-align: center; max-width: 380px; width: 100%; border: 1px solid #00ff88; position: relative; }
+        .qr-img { width: 220px; height: 220px; border-radius: 12px; margin: 15px 0; border: 2px solid #fff; }
+        .btn-telegram { display: inline-block; width: 100%; padding: 12px; background: #0088cc; color: #fff; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 10px; }
+        .close-btn { position: absolute; top: 10px; right: 15px; font-size: 20px; color: #a0aec0; cursor: pointer; }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <h1 class="logo">BOOSTZS</h1>
-    <p class="subtitle">សេវាកម្មបង្កើន TikTok ឆាប់រហ័ស និងមានសុត្ថិភាព «««««
-     Like   , View   , Comment  , Save   , Follow    គឺសុទ្ធតែខ្មែរទាំងអស់🇰🇭 »»»»»»»</p>
-    <h5>បើអាខោនអ្នកលក់មាន Likes , Views , Comments ច្រើន នោះប្រាកដណាស់នឹងបង្កើនទំនុកចិត្តអ្នកទិញ 70% ភ្លាមៗ</h5>🔥
+    <div class="card">
+        <h1>BOOSTZS</h1>
+        <p class="subtitle">សេវាកម្មបង្កើន TikTok ឆាប់រហ័ស និងមានសុវត្ថិភាព ⚡</p>
 
-    <form id="orderForm">
-        <div class="form-group">
-            <label>ជ្រើសរើសសេវាកម្ម</label>
-            <select id="service" required>
-                <option value="1">TikTok Followers - $2 / 1000</option>
-                <option value="2">TikTok Likes - $1 / 1000</option>
-                <option value="3">TikTok Views - $0.50 / 1000</option>
-            </select>
+        <form id="boostForm">
+            <div class="form-group">
+                <label>ជ្រើសរើសសេវាកម្ម</label>
+                <select id="serviceSelect" onchange="calculatePrice()">
+                    <!-- Value គឺ Service ID របស់ SMM Provider របស់អ្នក -->
+                    <option value="1" data-rate="2.00">TikTok Followers — $2.00 / 1000</option>
+                    <option value="2" data-rate="0.50">TikTok Likes — $0.50 / 1000</option>
+                    <option value="3" data-rate="0.10">TikTok Views — $0.10 / 1000</option>
+                    <option value="4" data-rate="1.50">TikTok Comments — $1.50 / 1000</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Link វីដេអូ ឬ គណនី TikTok</label>
+                <input type="url" id="linkInput" placeholder="https://www.tiktok.com/@username/video/..." required>
+            </div>
+
+            <div class="form-group">
+                <label>ចំនួន (Quantity)</label>
+                <input type="number" id="quantityInput" value="1000" min="100" oninput="calculatePrice()" required>
+            </div>
+
+            <div class="price-box">
+                <div class="price-title">តម្លៃសរុប (Total Amount)</div>
+                <div class="price-amount" id="totalPriceDisplay">$2.00</div>
+            </div>
+
+            <button type="submit" class="btn-submit">បន្តទៅការបង់ប្រាក់ ➔</button>
+        </form>
+    </div>
+
+    <!-- Modal បង្ហាញ QR Code បង់ប្រាក់ -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 style="color:#00ff88; margin-top:0;">ស្កែន KHQR ដើម្បីបង់ប្រាក់</h3>
+            <p style="font-size: 13px; color: #a0aec0;">ចំនួនទឹកប្រាក់ត្រូវបង់៖ <b id="modalPayAmount" style="color:#fff;">$2.00</b></p>
+            
+            <!-- ប្តូរ Link រូប QR Code ABA របស់អ្នកនៅទីនេះ -->
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=ABA_KHQR_PAYMENT_LINK" alt="KHQR Code" class="qr-img">
+            
+            <p style="font-size: 12px; color: #e2e8f0; margin-bottom: 10px;">
+                បន្ទាប់ពីស្កែនបង់ប្រាក់រួច សូមផ្ញើ **រូបថតវិក្កយបត្រ (Receipt)** មកកាន់ Telegram ដើម្បីឱ្យប្រព័ន្ធដំណើរការ Order ជូន!
+            </p>
+
+            <!-- ប្តូរ Link Telegram របស់អ្នកនៅទីនេះ -->
+            <a href="https://t.me/your_telegram_username" target="_blank" class="btn-telegram">
+                📩 ផ្ញើវិក្កយបត្រតាម Telegram
+            </a>
         </div>
+    </div>
 
-        <div class="form-group">
-            <label>Link វីដេអូ ឬ គណនី TikTok</label>
-            <input type="url" id="link" placeholder="https://www.tiktok.com/@username/video/..." required>
-        </div>
+    <script>
+        function calculatePrice() {
+            const serviceSelect = document.getElementById('serviceSelect');
+            const selectedOption = serviceSelect.options[serviceSelect.selectedIndex];
+            const rate = parseFloat(selectedOption.getAttribute('data-rate'));
+            const quantity = parseInt(document.getElementById('quantityInput').value) || 0;
 
-        <div class="form-group">
-            <label>ចំនួន (Quantity)</label>
-            <input type="number" id="quantity" min="100" value="1000" required>
-        </div>
+            const total = (quantity / 1000) * rate;
+            const formattedTotal = '$' + total.toFixed(2);
 
-        <button type="submit">បញ្ជាទិញឥឡូវនេះ</button>
-    </form>
-
-    <div id="message"></div>
-</div>
-
-<script>
-    document.getElementById('orderForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const messageDiv = document.getElementById('message');
-        messageDiv.style.color = '#00ff66';
-        messageDiv.innerText = "កំពុងដំណើរការ...";
-
-        const orderData = {
-            service: document.getElementById('service').value,
-            link: document.getElementById('link').value,
-            quantity: document.getElementById('quantity').value
-        };
-
-        try {
-            const response = await fetch('/api/order', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(orderData)
-            });
-
-            const result = await response.json();
-            if(result.success) {
-                messageDiv.style.color = '#00ff66';
-                messageDiv.innerText = "ការបញ្ជាទិញបានជោគជ័យ! Order ID: " + result.order_id;
-            } else {
-                messageDiv.style.color = '#ff4d4d';
-                messageDiv.innerText = "មានបញ្ហា: " + result.error;
-            }
-        } catch (err) {
-            messageDiv.style.color = '#ff4d4d';
-            messageDiv.innerText = "មិនអាចភ្ជាប់ទៅកាន់ Server បានទេ!";
+            document.getElementById('totalPriceDisplay').innerText = formattedTotal;
+            document.getElementById('modalPayAmount').innerText = formattedTotal;
         }
-    });
-</script>
 
+        document.getElementById('boostForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // បង្ហាញ Popup QR Code សម្រាប់បង់ប្រាក់
+            document.getElementById('paymentModal').style.display = 'flex';
+
+            // បញ្ជូន Order ទៅ Backend
+            const service = document.getElementById('serviceSelect').value;
+            const link = document.getElementById('linkInput').value;
+            const quantity = document.getElementById('quantityInput').value;
+
+            try {
+                const response = await fetch('/api/order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ service, link, quantity })
+                });
+
+                const data = await response.json();
+                if(data.success) {
+                    console.log('Order created ID:', data.order_id);
+                } else {
+                    console.log('Order Error:', data.error);
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        });
+
+        function closeModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
