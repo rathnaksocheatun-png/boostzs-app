@@ -205,13 +205,15 @@
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        .qr-card-img { 
-            width: 100%; 
-            max-width: 260px; 
-            height: auto; 
+        .qr-img { 
+            width: 220px; 
+            height: 220px; 
             border-radius: 16px; 
-            margin: 14px 0; 
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+            margin: 16px 0; 
+            border: 2px solid #ffffff; 
+            background: #ffffff; 
+            padding: 8px; 
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         }
 
         .btn-app { 
@@ -316,13 +318,14 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <h3 style="color:#00ff88; margin-top:0; font-size: 20px; font-weight:700;">ស្កែន KHQR ដើម្បីបង់ប្រាក់</h3>
+            <div class="account-name">RATHNAKSOCHEAT UN</div>
             <p style="font-size: 13px; color: #ff66b2; margin-top: 6px; margin-bottom: 4px;">ចំនួនទឹកប្រាក់ត្រូវបង់៖ <b style="color:#00ff88; font-size: 18px; font-family:'Inter';">$0.96</b></p>
             
-            <!-- រូបភាព KHQR ពេញលេញ RATHNAKSOCHEAT UN -->
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://bakong-deeplink.nbc.gov.kh/bakong/IB559UC2HCtFCZF9M" alt="Bakong KHQR Card" class="qr-card-img">
+            <!-- បង្កើត QR Code ចេញពី Deep Link ថ្មី -->
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://bakong-deeplink.nbc.gov.kh/bakong/TNVtmq9KtPTgcZEEV" alt="Bakong KHQR" class="qr-img">
             
-            <!-- ប៊ូតុងចុចបើក App Bakong / ABA -->
-            <a href="https://bakong-deeplink.nbc.gov.kh/bakong/IB559UC2HCtFCZF9M" target="_blank" class="btn-app">
+            <!-- ប៊ូតុងចុចបើក App Bakong / ABA ដោយប្រើ Deep Link ថ្មី -->
+            <a href="https://bakong-deeplink.nbc.gov.kh/bakong/TNVtmq9KtPTgcZEEV" target="_blank" class="btn-app">
                 📲 ចុចទីនេះដើម្បីបង់ប្រាក់តាម App
             </a>
 
@@ -376,7 +379,7 @@
 
             // អត្ថបទសារសម្រាប់ផ្ញើទៅ Telegram
             const reportText = `សួស្តី! ខ្ញុំបានបង់ប្រាក់រួចរាល់ហើយ ៖%0A%0A` +
-                               `📌 [USERNAME] UN%0A` +
+                               `📌 NAME: RATHNAKSOCHEAT UN%0A` +
                                `🔗 Link Video: ${encodeURIComponent(videoLink)}%0A` +
                                `🛠️ Service: ${serviceName} (${quantity})%0A` +
                                `💵 Price: $0.96`;
