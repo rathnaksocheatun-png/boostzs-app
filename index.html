@@ -8,24 +8,28 @@
         * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #0b0e14; color: #fff; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
         .card { background: #151a23; border: 1px solid #222b3a; border-radius: 16px; padding: 25px; width: 100%; max-width: 450px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        h1 { color: #00ff88; text-align: center; font-size: 32px; margin-bottom: 5px; text-shadow: 0 0 10px rgba(0, 255, 136, 0.3); }
+        h1 { color: #00ff88; text-align: center; font-size: 32px; margin-bottom: 5px; text-shadow: 0 0 10px rgba(0, 255, 136, 0.3); letter-spacing: 1px; }
         p.subtitle { text-align: center; color: #a0aec0; font-size: 13px; margin-bottom: 25px; }
         .form-group { margin-bottom: 18px; }
         label { display: block; font-size: 14px; margin-bottom: 8px; color: #e2e8f0; font-weight: 600; }
-        select, input { width: 100%; padding: 12px 15px; background: #0b0e14; border: 1px solid #2d3748; border-radius: 8px; color: #fff; font-size: 14px; outline: none; }
+        select, input { width: 100%; padding: 12px 15px; background: #0b0e14; border: 1px solid #2d3748; border-radius: 8px; color: #fff; font-size: 14px; outline: none; transition: 0.2s; }
         select:focus, input:focus { border-color: #00ff88; }
-        .price-box { background: rgba(0, 255, 136, 0.1); border: 1px dashed #00ff88; border-radius: 8px; padding: 12px; text-align: center; margin-bottom: 20px; }
-        .price-title { font-size: 13px; color: #a0aec0; }
-        .price-amount { font-size: 24px; font-weight: bold; color: #00ff88; }
+        
+        .price-box { background: rgba(0, 255, 136, 0.08); border: 1px dashed #00ff88; border-radius: 8px; padding: 15px; text-align: center; margin-bottom: 20px; }
+        .price-title { font-size: 13px; color: #a0aec0; margin-bottom: 4px; }
+        .price-amount { font-size: 26px; font-weight: bold; color: #00ff88; }
+        .limit-info { font-size: 12px; color: #ff007f; margin-top: 5px; }
+
         .btn-submit { width: 100%; padding: 14px; background: #00ff88; color: #000; font-weight: bold; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; transition: 0.3s; }
         .btn-submit:hover { background: #00cc6a; transform: translateY(-2px); }
         
         /* Modal QR Code */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 1000; padding: 20px; }
         .modal-content { background: #151a23; border-radius: 16px; padding: 25px; text-align: center; max-width: 380px; width: 100%; border: 1px solid #00ff88; position: relative; }
-        .qr-img { width: 220px; height: 220px; border-radius: 12px; margin: 15px 0; border: 2px solid #fff; }
-        .btn-telegram { display: inline-block; width: 100%; padding: 12px; background: #0088cc; color: #fff; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 10px; }
-        .close-btn { position: absolute; top: 10px; right: 15px; font-size: 20px; color: #a0aec0; cursor: pointer; }
+        .qr-img { width: 210px; height: 210px; border-radius: 12px; margin: 15px 0; border: 2px solid #fff; background: #fff; padding: 5px; }
+        .btn-app { display: block; width: 100%; padding: 12px; background: #00ff88; color: #000; font-weight: bold; text-decoration: none; border-radius: 8px; margin-bottom: 12px; font-size: 14px; }
+        .btn-telegram { display: inline-block; width: 100%; padding: 12px; background: #0088cc; color: #fff; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 14px; }
+        .close-btn { position: absolute; top: 10px; right: 15px; font-size: 24px; color: #a0aec0; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -37,12 +41,10 @@
         <form id="boostForm">
             <div class="form-group">
                 <label>ជ្រើសរើសសេវាកម្ម</label>
-                <select id="serviceSelect" onchange="calculatePrice()">
-                    <!-- Value គឺ Service ID របស់ SMM Provider របស់អ្នក -->
-                    <option value="1" data-rate="2.00">TikTok Followers — $2.00 / 1000</option>
-                    <option value="2" data-rate="0.50">TikTok Likes — $0.50 / 1000</option>
-                    <option value="3" data-rate="0.10">TikTok Views — $0.10 / 1000</option>
-                    <option value="4" data-rate="1.50">TikTok Comments — $1.50 / 1000</option>
+                <select id="serviceSelect" onchange="updateServiceInfo()">
+                    <option value="likes" data-price="0.96" data-min="494" data-max="1235">TikTok Likes — $0.96 (494 - 1,235 Likes)</option>
+                    <option value="views" data-price="0.96" data-min="2555" data-max="8234">TikTok Views — $0.96 (2,555 - 8,234 Views)</option>
+                    <option value="followers" data-price="0.96" data-min="4577" data-max="15511">TikTok Followers — $0.96 (4,577 - 15,511 Followers)</option>
                 </select>
             </div>
 
@@ -53,77 +55,92 @@
 
             <div class="form-group">
                 <label>ចំនួន (Quantity)</label>
-                <input type="number" id="quantityInput" value="1000" min="100" oninput="calculatePrice()" required>
+                <input type="number" id="quantityInput" value="494" oninput="validateQuantity()" required>
             </div>
 
             <div class="price-box">
-                <div class="price-title">តម្លៃសរុប (Total Amount)</div>
-                <div class="price-amount" id="totalPriceDisplay">$2.00</div>
+                <div class="price-title">តម្លៃសរុប (Total Price)</div>
+                <div class="price-amount" id="totalPriceDisplay">$0.96</div>
+                <div class="limit-info" id="limitInfoDisplay">អនុញ្ញាតចាប់ពី 494 ដល់ 1,235</div>
             </div>
 
             <button type="submit" class="btn-submit">បន្តទៅការបង់ប្រាក់ ➔</button>
         </form>
     </div>
 
-    <!-- Modal បង្ហាញ QR Code បង់ប្រាក់ -->
+    <!-- Modal បង្ហាញ QR Code Bakong -->
     <div class="modal" id="paymentModal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h3 style="color:#00ff88; margin-top:0;">ស្កែន KHQR ដើម្បីបង់ប្រាក់</h3>
-            <p style="font-size: 13px; color: #a0aec0;">ចំនួនទឹកប្រាក់ត្រូវបង់៖ <b id="modalPayAmount" style="color:#fff;">$2.00</b></p>
+            <h3 style="color:#00ff88; margin-top:0; font-size: 20px;">ស្កែន KHQR ដើម្បីបង់ប្រាក់</h3>
+            <p style="font-size: 13px; color: #a0aec0; margin-bottom: 5px;">ចំនួនទឹកប្រាក់ត្រូវបង់៖ <b style="color:#00ff88; font-size: 18px;">$0.96</b></p>
             
-            <!-- ប្តូរ Link រូប QR Code ABA របស់អ្នកនៅទីនេះ -->
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=ABA_KHQR_PAYMENT_LINK" alt="KHQR Code" class="qr-img">
+            <!-- រូប QR Code ចេញពី Link Bakong -->
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://bakong-deeplink.nbc.gov.kh/bakong/GjoLOl4Sl7I3xD8Xw" alt="Bakong KHQR" class="qr-img">
             
-            <p style="font-size: 12px; color: #e2e8f0; margin-bottom: 10px;">
-                បន្ទាប់ពីស្កែនបង់ប្រាក់រួច សូមផ្ញើ **រូបថតវិក្កយបត្រ (Receipt)** មកកាន់ Telegram ដើម្បីឱ្យប្រព័ន្ធដំណើរការ Order ជូន!
+            <!-- ប៊ូតុងចុចបើក App Bakong / ABA -->
+            <a href="https://bakong-deeplink.nbc.gov.kh/bakong/GjoLOl4Sl7I3xD8Xw" target="_blank" class="btn-app">
+                📲 ចុចទីនេះដើម្បីបង់ប្រាក់តាម App
+            </a>
+
+            <p style="font-size: 12px; color: #a0aec0; margin-bottom: 12px;">
+                បន្ទាប់ពីបង់ប្រាក់រួច សូមផ្ញើ **រូបថតវិក្កយបត្រ (Receipt)** មក Telegram ដើម្បីឱ្យប្រព័ន្ធដំណើរការ Order ជូន!
             </p>
 
-            <!-- ប្តូរ Link Telegram របស់អ្នកនៅទីនេះ -->
-            <a href="https://t.me/your_telegram_username" target="_blank" class="btn-telegram">
+            <!-- Telegram Link -->
+            <a href="https://t.me/un_rathnak_socheat" target="_blank" class="btn-telegram">
                 📩 ផ្ញើវិក្កយបត្រតាម Telegram
             </a>
         </div>
     </div>
 
     <script>
-        function calculatePrice() {
-            const serviceSelect = document.getElementById('serviceSelect');
-            const selectedOption = serviceSelect.options[serviceSelect.selectedIndex];
-            const rate = parseFloat(selectedOption.getAttribute('data-rate'));
-            const quantity = parseInt(document.getElementById('quantityInput').value) || 0;
+        function updateServiceInfo() {
+            const select = document.getElementById('serviceSelect');
+            const selectedOption = select.options[select.selectedIndex];
+            
+            const min = selectedOption.getAttribute('data-min');
+            const max = selectedOption.getAttribute('data-max');
+            
+            const quantityInput = document.getElementById('quantityInput');
+            quantityInput.min = min;
+            quantityInput.max = max;
+            quantityInput.value = min;
 
-            const total = (quantity / 1000) * rate;
-            const formattedTotal = '$' + total.toFixed(2);
+            document.getElementById('limitInfoDisplay').innerText = `អនុញ្ញាតចាប់ពី ${parseInt(min).toLocaleString()} ដល់ ${parseInt(max).toLocaleString()}`;
+        }
 
-            document.getElementById('totalPriceDisplay').innerText = formattedTotal;
-            document.getElementById('modalPayAmount').innerText = formattedTotal;
+        function validateQuantity() {
+            const select = document.getElementById('serviceSelect');
+            const selectedOption = select.options[select.selectedIndex];
+            const min = parseInt(selectedOption.getAttribute('data-min'));
+            const max = parseInt(selectedOption.getAttribute('data-max'));
+            const val = parseInt(document.getElementById('quantityInput').value) || 0;
+
+            if (val < min || val > max) {
+                document.getElementById('limitInfoDisplay').style.color = '#ff4d4d';
+            } else {
+                document.getElementById('limitInfoDisplay').style.color = '#ff007f';
+            }
         }
 
         document.getElementById('boostForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            // បង្ហាញ Popup QR Code សម្រាប់បង់ប្រាក់
+            // បង្ហាញ Popup KHQR
             document.getElementById('paymentModal').style.display = 'flex';
 
-            // បញ្ជូន Order ទៅ Backend
+            // បញ្ជូនទិន្នន័យទៅ Backend
             const service = document.getElementById('serviceSelect').value;
             const link = document.getElementById('linkInput').value;
             const quantity = document.getElementById('quantityInput').value;
 
             try {
-                const response = await fetch('/api/order', {
+                await fetch('/api/order', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ service, link, quantity })
+                    body: JSON.stringify({ service, link, quantity, price: 0.96 })
                 });
-
-                const data = await response.json();
-                if(data.success) {
-                    console.log('Order created ID:', data.order_id);
-                } else {
-                    console.log('Order Error:', data.error);
-                }
             } catch (err) {
                 console.error(err);
             }
@@ -132,6 +149,9 @@
         function closeModal() {
             document.getElementById('paymentModal').style.display = 'none';
         }
+
+        // កំណត់តម្លៃដំបូងពេលបើក Web
+        updateServiceInfo();
     </script>
 </body>
 </html>
