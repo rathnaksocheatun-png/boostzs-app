@@ -29,27 +29,20 @@
             overflow-x: hidden;
         }
 
-        /* Banner Background រស់រវើក */
+        /* Banner Background */
         .bg-banner {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(3, 7, 18, 0.75), rgba(3, 7, 18, 0.95)), 
+            background: linear-gradient(to bottom, rgba(3, 7, 18, 0.8), rgba(3, 7, 18, 0.95)), 
                         url('image_7.png') center/cover no-repeat;
             z-index: -2;
-            filter: brightness(0.7) contrast(1.1);
-            transform: scale(1.02);
-            animation: bgZoom 20s infinite alternate ease-in-out;
+            filter: brightness(0.6) contrast(1.1);
         }
 
-        @keyframes bgZoom {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.06); }
-        }
-
-        /* Overlay Glow */
+        /* Background Glow */
         .bg-glow {
             position: fixed;
             top: 50%;
@@ -64,17 +57,29 @@
         }
 
         .container { 
-            background: rgba(15, 23, 42, 0.85); 
+            background: rgba(15, 23, 42, 0.88); 
             border: 1px solid rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-radius: 24px; 
-            padding: 30px 22px; 
+            padding: 24px 20px; 
             width: 100%; 
             max-width: 480px; 
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(239, 68, 68, 0.2); 
             position: relative;
             z-index: 1;
+            overflow: hidden;
+        }
+
+        /* Banner នៅខាងលើ Card */
+        .top-banner-img {
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            display: block;
         }
 
         /* Header / Font Style BOOSTZS ក្រហមលាយសដិត មានភ្លើងឆេះពីក្រោម */
@@ -86,7 +91,7 @@
 
         h1.brand-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: 46px;
+            font-size: 44px;
             font-weight: 900;
             font-style: italic;
             letter-spacing: 2px;
@@ -98,7 +103,7 @@
             display: inline-block;
         }
 
-        /* ភ្លើងឆេះពីក្រោម និងភ្លឺភ្លែតៗ */
+        /* ភ្លើងឆេះពីក្រោម */
         h1.brand-title::after {
             content: '';
             position: absolute;
@@ -118,7 +123,7 @@
             100% { opacity: 0.8; transform: scaleX(0.98) scaleY(1); filter: blur(4px); }
         }
 
-        /* Description ពណ៌បៃតងភ្លឺៗ មានរន្ទះបាញ់ជុំវិញ */
+        /* Description ពណ៌បៃតងភ្លឺៗ មានរន្ទះ */
         .desc-box {
             text-align: center;
             background: rgba(16, 185, 129, 0.08);
@@ -140,7 +145,6 @@
             100% { box-shadow: 0 0 22px rgba(16, 185, 129, 0.7), inset 0 0 10px rgba(16, 185, 129, 0.4); }
         }
 
-        /* ចំណងជើងទំហំល្មមរាងចូលដើមបន្ទាត់ */
         .trust-title {
             font-size: 13.5px;
             color: #cbd5e1;
@@ -150,7 +154,6 @@
             font-weight: 500;
         }
 
-        /* ប្រអប់ចំណាំ */
         .notice-box {
             background: rgba(239, 68, 68, 0.12);
             border-left: 4px solid #ef4444;
@@ -162,7 +165,6 @@
             margin-bottom: 22px;
         }
 
-        /* Sections: Service, Package, Confirmation */
         .section-title {
             font-size: 15px;
             font-weight: 700;
@@ -173,7 +175,6 @@
             gap: 6px;
         }
 
-        /* Options Buttons Grid */
         .grid-options {
             display: grid;
             grid-template-columns: repeat(1, 1fr);
@@ -225,11 +226,6 @@
             font-weight: 700;
         }
 
-        .owner-contact a:hover {
-            text-decoration: underline;
-        }
-
-        /* Order Confirmation Box */
         .confirmation-card {
             background: rgba(15, 23, 42, 0.95);
             border: 1px solid rgba(239, 68, 68, 0.3);
@@ -260,7 +256,6 @@
             color: #10b981;
         }
 
-        /* Form Inputs */
         .form-input {
             width: 100%;
             padding: 12px;
@@ -278,7 +273,7 @@
             box-shadow: 0 0 8px rgba(56, 189, 248, 0.3);
         }
 
-        /* Payment Section */
+        /* Payment Section & KHQR Card Container */
         .payment-box {
             text-align: center;
             background: rgba(0, 0, 0, 0.4);
@@ -287,14 +282,16 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .qr-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 12px;
-            background: #ffffff;
-            padding: 6px;
-            margin: 12px 0;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+        /* រូប KHQR កាតដើម (រក្សាទម្រង់ដើម ១០០% មិនខូចទ្រង់ទ្រាយ) */
+        .khqr-card-img {
+            width: 100%;
+            max-width: 320px;
+            height: auto;
+            border-radius: 16px;
+            margin: 14px auto;
+            display: block;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .btn-tg {
@@ -326,6 +323,9 @@
 
     <div class="container">
         
+        <!-- រូប Banner នៅខាងលើ -->
+        <img src="image_7.png" alt="BOOSTZS Banner" class="top-banner-img">
+
         <!-- Header / Logo -->
         <div class="brand-header">
             <h1 class="brand-title">BOOSTZS</h1>
@@ -364,7 +364,7 @@
         <!-- Package 🎁 -->
         <div class="section-title">Package 🎁</div>
         <div class="grid-options" id="packageGroup">
-            <!-- Packages នឹងត្រូវបាន Update តាម Service ដោយស្វ័យប្រវត្ត -->
+            <!-- Dynamic Packages -->
         </div>
 
         <!-- Owner Contact -->
@@ -393,15 +393,15 @@
             </div>
         </div>
 
-        <!-- Payment & QR Section -->
+        <!-- Payment & KHQR Section -->
         <div class="payment-box">
             <div style="font-size: 13.5px; color: #38bdf8; font-weight: 700;">ទូទាត់ប្រាក់តាម KHQR ខាងក្រោម 📲</div>
             
-            <!-- KHQR Image (ស្កែនបានពិតៗ) -->
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=000201010211373000130000000000010113rathnaksocheat_un@bkrt5204599953038405802KH5918RATHNAKSOCHEAT%20UN6010Phnom%20Penh6304" alt="KHQR Payment" class="qr-image">
+            <!-- រូប KHQR កាតដើមរបស់អ្នក (Acleda KHQR) រក្សាទម្រង់ដើម ១០០% -->
+            <img src="image_8.png" alt="Acleda KHQR Card" class="khqr-card-img">
 
             <p style="font-size: 12px; color: #94a3b8; margin-top: 4px;">
-                បង់ប្រាក់រួច ចុចប៊ូតុងខាងក្រោមដើម្បីផ្ញើរបាយការណ៍ទៅ Telegram Owner
+                អ្នកអាច Screenshot រូប KHQR ខាងលើដើម្បីស្កែនបង់ប្រាក់ រួចចុចប៊ូតុងខាងក្រោមផ្ញើរបាយការណ៍ទៅ Telegram Owner
             </p>
 
             <a id="tgSendBtn" href="https://t.me/zicksiik" target="_blank" class="btn-tg">
@@ -412,7 +412,6 @@
     </div>
 
     <script>
-        // ទិន្នន័យ Packages តាមប្រភេទ Service
         const packagesData = {
             'TikTok Likes ❤️': [
                 { text: '$0.96 / 454 - 1235 ❤️', price: 0.96, pkg: '454 - 1235 ❤️' },
@@ -436,12 +435,10 @@
         function selectService(serviceName, element) {
             currentService = serviceName;
             
-            // Active style for Service Button
             const btns = document.querySelectorAll('#serviceGroup .opt-btn');
             btns.forEach(btn => btn.classList.remove('active'));
             element.classList.add('active');
 
-            // Render Packages
             renderPackages();
         }
 
@@ -450,7 +447,7 @@
             pkgContainer.innerHTML = '';
 
             const list = packagesData[currentService];
-            currentPackage = list[0]; // set default to first package
+            currentPackage = list[0];
 
             list.forEach((item, index) => {
                 const btn = document.createElement('button');
@@ -478,7 +475,6 @@
             document.getElementById('confPackage').innerText = currentPackage.pkg;
             document.getElementById('confTotal').innerText = `$${currentPackage.price.toFixed(2)}`;
 
-            // បង្កើតអត្ថបទសារតាមទម្រង់ដែលបានកំណត់
             const userTg = document.getElementById('tgInput').value || 'មិនបានបញ្ចូល';
             const tiktokLink = document.getElementById('linkInput').value || 'មិនបានបញ្ចូល';
 
@@ -493,7 +489,6 @@
             document.getElementById('tgSendBtn').href = tgUrl;
         }
 
-        // Initialize
         renderPackages();
     </script>
 </body>
