@@ -8,7 +8,29 @@
         * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #0b0e14; color: #fff; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
         .card { background: #151a23; border: 1px solid #222b3a; border-radius: 16px; padding: 25px; width: 100%; max-width: 450px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        h1 { color: #00ff88; text-align: center; font-size: 32px; margin-bottom: 5px; text-shadow: 0 0 10px rgba(0, 255, 136, 0.3); letter-spacing: 1px; }
+        
+        /* ចលនា Live (Glow & Pulse) លើចំណងជើង BOOSTZS */
+        h1.live-title { 
+            color: #00ff88; 
+            text-align: center; 
+            font-size: 36px; 
+            font-weight: 800;
+            margin-bottom: 5px; 
+            letter-spacing: 2px;
+            animation: pulseGlow 1.8s infinite alternate ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                text-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88, 0 0 20px #00ff88;
+                transform: scale(1);
+            }
+            100% {
+                text-shadow: 0 0 15px #00ff88, 0 0 25px #00ff88, 0 0 40px #00ff88, 0 0 50px #00ff88;
+                transform: scale(1.03);
+            }
+        }
+
         p.subtitle { text-align: center; color: #a0aec0; font-size: 13px; margin-bottom: 25px; }
         .form-group { margin-bottom: 18px; }
         label { display: block; font-size: 14px; margin-bottom: 8px; color: #e2e8f0; font-weight: 600; }
@@ -30,21 +52,22 @@
         .btn-app { display: block; width: 100%; padding: 12px; background: #00ff88; color: #000; font-weight: bold; text-decoration: none; border-radius: 8px; margin-bottom: 12px; font-size: 14px; }
         .btn-telegram { display: inline-block; width: 100%; padding: 12px; background: #0088cc; color: #fff; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 14px; }
         .close-btn { position: absolute; top: 10px; right: 15px; font-size: 24px; color: #a0aec0; cursor: pointer; }
+        .account-name { color: #e2e8f0; font-size: 14px; font-weight: bold; margin-top: 5px; }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <h1>BOOSTZS</h1>
+        <h1 class="live-title">BOOSTZS</h1>
         <p class="subtitle">សេវាកម្មបង្កើន TikTok ឆាប់រហ័ស និងមានសុវត្ថិភាព ⚡</p>
 
         <form id="boostForm">
             <div class="form-group">
                 <label>ជ្រើសរើសសេវាកម្ម</label>
                 <select id="serviceSelect" onchange="updateServiceInfo()">
-                    <option value="likes" data-price="0.96" data-min="494" data-max="1235">TikTok Likes — $0.96 (494 - 1,235 Likes)</option>
-                    <option value="views" data-price="0.96" data-min="2555" data-max="8234">TikTok Views — $0.96 (2,555 - 8,234 Views)</option>
-                    <option value="followers" data-price="0.96" data-min="4577" data-max="15511">TikTok Followers — $0.96 (4,577 - 15,511 Followers)</option>
+                    <option value="TikTok Likes" data-price="0.96" data-min="494" data-max="1235">TikTok Likes — $0.96 (494 - 1,235 Likes)</option>
+                    <option value="TikTok Views" data-price="0.96" data-min="2555" data-max="8234">TikTok Views — $0.96 (2,555 - 8,234 Views)</option>
+                    <option value="TikTok Followers" data-price="0.96" data-min="4577" data-max="15511">TikTok Followers — $0.96 (4,577 - 15,511 Followers)</option>
                 </select>
             </div>
 
@@ -73,13 +96,14 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <h3 style="color:#00ff88; margin-top:0; font-size: 20px;">ស្កែន KHQR ដើម្បីបង់ប្រាក់</h3>
-            <p style="font-size: 13px; color: #a0aec0; margin-bottom: 5px;">ចំនួនទឹកប្រាក់ត្រូវបង់៖ <b style="color:#00ff88; font-size: 18px;">$0.96</b></p>
+            <div class="account-name">RATHNAKSOCHEAT UN</div>
+            <p style="font-size: 13px; color: #a0aec0; margin-top: 5px; margin-bottom: 5px;">ចំនួនទឹកប្រាក់ត្រូវបង់៖ <b style="color:#00ff88; font-size: 18px;">$0.96</b></p>
             
-            <!-- រូប QR Code ចេញពី Link Bakong -->
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://bakong-deeplink.nbc.gov.kh/bakong/GjoLOl4Sl7I3xD8Xw" alt="Bakong KHQR" class="qr-img">
+            <!-- រូប QR Code Bakong ថ្មី -->
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://bakong-deeplink.nbc.gov.kh/bakong/IB559UC2HCtFCZF9M" alt="Bakong KHQR" class="qr-img">
             
             <!-- ប៊ូតុងចុចបើក App Bakong / ABA -->
-            <a href="https://bakong-deeplink.nbc.gov.kh/bakong/GjoLOl4Sl7I3xD8Xw" target="_blank" class="btn-app">
+            <a href="https://bakong-deeplink.nbc.gov.kh/bakong/IB559UC2HCtFCZF9M" target="_blank" class="btn-app">
                 📲 ចុចទីនេះដើម្បីបង់ប្រាក់តាម App
             </a>
 
@@ -87,8 +111,8 @@
                 បន្ទាប់ពីបង់ប្រាក់រួច សូមផ្ញើ **រូបថតវិក្កយបត្រ (Receipt)** មក Telegram ដើម្បីឱ្យប្រព័ន្ធដំណើរការ Order ជូន!
             </p>
 
-            <!-- Telegram Link -->
-            <a href="https://t.me/un_rathnak_socheat" target="_blank" class="btn-telegram">
+            <!-- Telegram Link ដែលមានសាររាយការណ៍អូតូ -->
+            <a id="telegramBtn" href="#" target="_blank" class="btn-telegram">
                 📩 ផ្ញើវិក្កយបត្រតាម Telegram
             </a>
         </div>
@@ -124,33 +148,33 @@
             }
         }
 
-        document.getElementById('boostForm').addEventListener('submit', async function(e) {
+        document.getElementById('boostForm').addEventListener('submit', function(e) {
             e.preventDefault();
+
+            const serviceName = document.getElementById('serviceSelect').value;
+            const videoLink = document.getElementById('linkInput').value;
+            const quantity = document.getElementById('quantityInput').value;
+
+            // បង្កើតអត្ថបទសារសម្រាប់ផ្ញើទៅ Telegram
+            const reportText = `សួស្តី! ខ្ញុំបានបង់ប្រាក់រួចរាល់ហើយ ៖%0A%0A` +
+                               `📌 NAME: RATHNAKSOCHEAT UN%0A` +
+                               `🔗 Link Video: ${encodeURIComponent(videoLink)}%0A` +
+                               `🛠️ Service: ${serviceName} (${quantity})%0A` +
+                               `💵 Price: $0.96`;
+
+            // បញ្ចូល Link ទៅកាន់ប៊ូតុង Telegram
+            const telegramUrl = `https://t.me/un_rathnak_socheat?text=${reportText}`;
+            document.getElementById('telegramBtn').href = telegramUrl;
 
             // បង្ហាញ Popup KHQR
             document.getElementById('paymentModal').style.display = 'flex';
-
-            // បញ្ជូនទិន្នន័យទៅ Backend
-            const service = document.getElementById('serviceSelect').value;
-            const link = document.getElementById('linkInput').value;
-            const quantity = document.getElementById('quantityInput').value;
-
-            try {
-                await fetch('/api/order', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ service, link, quantity, price: 0.96 })
-                });
-            } catch (err) {
-                console.error(err);
-            }
         });
 
         function closeModal() {
             document.getElementById('paymentModal').style.display = 'none';
         }
 
-        // កំណត់តម្លៃដំបូងពេលបើក Web
+        // កំណត់ទិន្នន័យដំបូង
         updateServiceInfo();
     </script>
 </body>
